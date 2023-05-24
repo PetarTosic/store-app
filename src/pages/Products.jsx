@@ -1,4 +1,4 @@
-import AppProducts from "../components/AppCustomers";
+import AppProducts from "../components/AppProducts";
 
 const Products = () => {
   return <AppProducts/>
