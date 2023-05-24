@@ -4,6 +4,7 @@ import Welcome from "./components/Welcome";
 import Customers from "./pages/Customers";
 import Products from "./pages/Products";
 import { useState } from "react";
+import AddCustomer from "./pages/AddCustomer";
 
 const listOfPeople = [
   {
@@ -30,6 +31,34 @@ const listOfPeople = [
 
 function App() {
   const [people, setPeople] = useState(listOfPeople);
+  
+  const [state, setState] = useState({
+    firstName: "",
+    lastName: ""
+  });
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setState((prevState) => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    let newPerson = {
+      firstName: state.firstName,
+      lastName: state.lastName
+    }
+    console.log(state);
+    
+    setPeople((prevState) => prevState = [...prevState, newPerson]);
+
+    state.firstName = "";
+    state.lastName = "";
+  }
 
   const onRemove = (firstName) => {
     setPeople((prevState) =>
@@ -45,6 +74,7 @@ function App() {
         element={<Customers people={people} onRemove={onRemove} />}
       ></Route>
       <Route path="products" element={<Products />}></Route>
+      <Route path="addcustomer" element={<AddCustomer handleSubmit={handleSubmit} handleInputChange={handleInputChange} state={state}/>}></Route>
     </Routes>
   );
 }

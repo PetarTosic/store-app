@@ -26,17 +26,30 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link to={`/customers`} style={{ textDecoration: "none" }}>
-                <a className="nav-link active" aria-current="page" href="#">
-                  Customers
-                </a>
+              <Link
+                className="nav-link active"
+                to={`/customers`}
+                style={{ textDecoration: "none" }}
+              >
+                Customers
               </Link>
             </li>
             <li className="nav-item">
-              <Link to={`/products`} style={{ textDecoration: "none" }}>
-                <a className="nav-link active" aria-current="page" href="#">
-                  Products
-                </a>
+              <Link
+                className="nav-link active"
+                to={`/products`}
+                style={{ textDecoration: "none" }}
+              >
+                Products
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                className="nav-link active"
+                to={`/addcustomer`}
+                style={{ textDecoration: "none" }}
+              >
+                Add Customer
               </Link>
             </li>
           </ul>
