@@ -7,10 +7,12 @@ const Navbar = () => {
       style={{ borderBottom: "1px solid black" }}
     >
       <div className="container-fluid">
-        <Link to={`/`} style={{ textDecoration: "none" }}>
-          <a className="navbar-brand" href="#">
-            Navbar
-          </a>
+        <Link
+          className="navbar-brand"
+          to={`/`}
+          style={{ textDecoration: "none" }}
+        >
+          Navbar
         </Link>
         <button
           className="navbar-toggler"
@@ -53,17 +55,7 @@ const Navbar = () => {
               </Link>
             </li>
           </ul>
-          <form className="d-flex" role="search">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button className="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form>
+          
         </div>
       </div>
     </nav>

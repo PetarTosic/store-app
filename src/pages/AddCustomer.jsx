@@ -1,7 +1,7 @@
 import AddCustomerForm from "../components/AddCustomerForm";
 
-const AddCustomer = ({handleInputChange, handleSubmit, state}) => {
-  return <AddCustomerForm handleSubmit={handleSubmit} handleInputChange={handleInputChange} state={state}/>
+const AddCustomer = ({ handleSubmit }) => {
+  return <AddCustomerForm handleSubmit={handleSubmit} />
 }
 
 export default AddCustomer;

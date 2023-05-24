@@ -1,9 +1,25 @@
-const AddCustomerForm = ({ handleSubmit, handleInputChange, state }) => {
+import { useState } from "react";
+
+const AddCustomerForm = ({ handleSubmit }) => {
+
+  const [state, setState] = useState({
+    firstName: "",
+    lastName: ""
+  });
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setState((prevState) => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
   return (
     <form
       className="container mt-5"
       style={{ width: "300px" }}
-      onSubmit={handleSubmit}
+      onSubmit={(event) => handleSubmit(event, state)}
     >
       <h1 className="h3 mb-3 fw-normal">Create new customer:</h1>
 
