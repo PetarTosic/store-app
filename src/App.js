@@ -6,6 +6,7 @@ import Products from "./pages/Products";
 import { useState } from "react";
 import AddCustomer from "./pages/AddCustomer";
 import CustomerPurchases from "./pages/CustomerPurchases";
+import ProductList from "./pages/ProductList";
 
 const listOfProducts = [
   {
@@ -39,22 +40,27 @@ const listOfPeople = [
   {
     firstName: "John",
     lastName: "Doe",
+    products: []
   },
   {
     firstName: "Pera",
     lastName: "Peric",
+    products: []
   },
   {
     firstName: "Someone",
     lastName: "Something",
+    products: []
   },
   {
     firstName: "What",
     lastName: "Ever",
+    products: []
   },
   {
     firstName: "Marko",
     lastName: "Markovic",
+    products: []
   },
 ];
 
@@ -68,6 +74,23 @@ function App() {
     setProducts(productsCopy.filter((product) => product.name.includes(name)));
   };
 
+  const handleOption = (event, option, index) => {
+    event.preventDefault();
+    const product = products[index];
+    const person = people[option];
+    let has = 0;
+
+    person.products.map((prod) => {
+      if(prod.name == product.name) {
+        prod.count++
+        has = 1;
+      }
+    })
+    if(!has){
+      person.products.push({name: product.name, count: 1})
+    } 
+  }
+
   const addQuantity = (index) => {
     setProducts((prevState) =>
       prevState.map((product, id) => {
@@ -79,7 +102,17 @@ function App() {
     );
   };
 
-  const decreaseQuantity = (name) => {};
+  const decreaseQuantity = (index) => {
+    setProducts((prevState) =>
+      prevState.map((product, id) => {
+        if (id === index && product.quantity > 0) {
+          product.quantity--;
+        }
+        return product;
+      })
+    );
+  };
+
 
   // const [state, setState] = useState({
   //   firstName: "",
@@ -132,6 +165,10 @@ function App() {
       <Route
         path="customers/:id"
         element={<CustomerPurchases people={people} />}
+      />
+      <Route
+        path="products/:id"
+        element={<ProductList products={products} people={people} handleOption={handleOption} />}
       />
     </Routes>
   );
