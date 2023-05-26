@@ -1,11 +1,13 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const AppProducts = ({
-  products,
-  addQuantity,
-  decreaseQuantity,
-  handleSearch,
-}) => {
+    products,
+    addQuantity,
+    decreaseQuantity,
+    handleSearch,
+  }) => {
+
   const [state, setState] = useState({
     search: "",
   });
@@ -34,14 +36,6 @@ const AppProducts = ({
   //   }
   // };
 
-  // const adQuantity = (index) => {
-  //   console.log(index);
-  //   newProducts[index].quantity++;
-  //   console.log(newProducts[index].quantity);
-  //   addQuantity(newProducts[index].name);
-  // };
-
-  const dcsQuantity = (index) => {};
 
   return (
     <div className="container">
@@ -71,6 +65,7 @@ const AppProducts = ({
             <th></th>
             <th>Quantity</th>
             <th></th>
+            <th>Buy</th>
           </tr>
         </thead>
         <tbody>
@@ -91,11 +86,16 @@ const AppProducts = ({
               </td>
               <td style={{ width: "10px" }}>
                 <button
-                  onClick={() => dcsQuantity(index)}
+                  onClick={() => decreaseQuantity(index)}
                   className="btn btn-primary"
                 >
                   -
                 </button>
+              </td>
+              <td>
+                <Link className="btn btn-primary" to={`/products/${index}`}>
+                  Select
+                </Link>
               </td>
             </tr>
           ))}
